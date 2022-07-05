@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+
+    <style>
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="app">
+    <template>
+        <el-table
+                size="small"
+                :data="tableData"
+                style="width: 100%"
+                :row-class-name="tableRowClassName">
+            <el-table-column
+                    type="index"
+                    label="序号">
+            </el-table-column>
+            <el-table-column
+                    prop="date"
+                    label="日期">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="姓名">
+            </el-table-column>
+            <el-table-column
+                    prop="age"
+                    label="年龄">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="地址">
+            </el-table-column>
+        </el-table>
+    </template>
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+
+<script>
+    new Vue({
+        el:"#app",
+        methods: {
+            tableRowClassName({row, rowIndex}) {
+                console.log(row.age)
+                if (row.age > 25) {
+                    return 'warning-row';
+                } else if (row.age <=25) {
+                    return 'success-row';
+                }
+            }
+        },
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    age: 21,
+                    address: '上海市普陀区金沙江路 1518',
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    age: 27,
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    age: 24,
+                    address: '上海市普陀区金沙江路 1518 弄',
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    age: 29,
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }]
+            }
+        }
+    })
+</script>
+</body>
+</html>
