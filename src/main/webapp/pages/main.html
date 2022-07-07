@@ -28,7 +28,7 @@
 <body>
 <div id="app">
     <el-container>
-        <el-header  class="main-header" style="height:70px;">
+        <el-header  class="main-header" style="height:70px; background-color: #0abdfe" >
             <nav class="navbar navbar-static-top" :class=''>
                 <!-- Logo -->
                 <a href="http://www.swu.edu.cn/" class="logo" style="text-align:center">
@@ -82,7 +82,9 @@
 <script src="../plugins/element-ui/index.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../js/axios-0.18.0.js"></script>
-<script>
+
+<script type="text/javascript">
+
     new Vue({
         el:'#app',
         data:{
@@ -122,11 +124,18 @@
                 }
             ]
         },
-        getUsername(){
-            axios.post("/users/"+"张三").then((res) => {
-                console.log(res.data)
-                this.username = res.data.data;
-            })
+
+        created(){
+            this.getUsername();
+        },
+
+        method:{
+            getUsername(){
+                axios.get("/users/getSingle").then((res) => {
+                    console.log(res.data)
+                    this.username = res.data.data;
+                })
+            }
         }
     });
 </script>
