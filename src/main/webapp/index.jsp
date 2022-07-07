@@ -17,10 +17,14 @@
         <form action="LoginServlet" method="post">
             <h1>论文登陆系统</h1>
             <h1 style="color:white;font-size:20px;">账户类型:
+                教师
                 <input type="radio" id="js" name="accountType" value="教师">
-                <input type="radio" id="zs" name="" value="系主任">
-                <input type="radio" id="xs" name="" value="学生">
-                <input type="radio" id="jw" onclick="" value="教务人员">
+                系主任
+                <input type="radio" id="zs" name="accountType" value="系主任">
+                学生
+                <input type="radio" id="xs" name="accountType" value="学生">
+                教务人员
+                <input type="radio" id="jw" name="accountType" value="教务人员">
             </h1>
             <div class="form">
                 <div class="item">
