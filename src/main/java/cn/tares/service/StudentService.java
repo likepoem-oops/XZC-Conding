@@ -14,7 +14,7 @@ public interface StudentService {
      * @return 这个学生对象
      */
 
-    public Student getStudentBySno(Integer sno);
+    public Student getStudentBySno(String sno);
 
     /**
      *  查询所有学生
@@ -41,5 +41,8 @@ public interface StudentService {
      * @param sno 删除学生的学号
      * @return 是否成功
      */
-    public boolean deleteStudent(Integer sno);
+    public boolean deleteStudent(String sno);
+
+    // 按topicPick查询学生
+    public List<Student> getNoTopic(String topicPick);
 }

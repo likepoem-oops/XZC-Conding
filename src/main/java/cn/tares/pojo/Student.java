@@ -4,11 +4,12 @@ package cn.tares.pojo;
 public class Student {
 
 
-    private Integer sno;
+    private String sno;
     private String name;
     private String password;
     private String topicPick;
     private String major;
+    private String topicName;
 
 
     @Override
@@ -19,14 +20,23 @@ public class Student {
                 ", password='" + password + '\'' +
                 ", topicPick='" + topicPick + '\'' +
                 ", major='" + major + '\'' +
+                ", topicName='" + topicName + '\'' +
                 '}';
     }
 
-    public Integer getSno() {
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public String getSno() {
         return sno;
     }
 
-    public void setSno(Integer sno) {
+    public void setSno(String sno) {
         this.sno = sno;
     }
 

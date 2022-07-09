@@ -15,7 +15,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentDao studentDao;
 
     @Override
-    public Student getStudentBySno(Integer sno) {
+    public Student getStudentBySno(String sno) {
         return studentDao.getStudentBySno(sno);
     }
 
@@ -35,7 +35,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean deleteStudent(Integer sno) {
+    public boolean deleteStudent(String sno) {
         return studentDao.deleteStudent(sno) > 0;
+    }
+
+    @Override
+    public List<Student> getNoTopic(String topicPick) {
+        return studentDao.getNoTopic(topicPick);
     }
 }

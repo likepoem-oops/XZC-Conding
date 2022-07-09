@@ -6,11 +6,17 @@ import cn.tares.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
+
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
+
+
 
 
     @GetMapping
@@ -21,4 +27,12 @@ public class UserController {
         String result =  (user != null)? user.getUsername(): null;
     return new Result(code, result, msg);
     }
+
+    @GetMapping("/getSingle")
+    public Result getCurrentUser(HttpServletRequest request){
+        String  studentName = (String) request.getSession().getAttribute("studentName");
+        System.out.println(studentName);
+        return new Result(123, studentName, "测试");
+    }
+
 }

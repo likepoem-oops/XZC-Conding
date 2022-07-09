@@ -10,6 +10,6 @@ public class JumpPageController {
     @RequestMapping(value = "/loginSuccess", method = RequestMethod.GET)
     public String loginSuccess(){
         System.out.println("跳转...");
-        return "/pages/main.html";
+        return "/pages/adminMain.html";
     }
 }

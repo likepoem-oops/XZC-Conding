@@ -10,26 +10,7 @@
             text-align: center;
         }
 
-        .TopNavigation {
-            overflow: hidden;
-            background-color: #f2f2f2;
-            display: flex;
-        }
 
-        .TopNavigation a {
-            float: left;
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            flex: 1;
-        }
-
-        .TopNavigation a:hover {
-            background-color: #B0E0E6;
-            color: black;
-        }
 
     </style>
     <meta charset="UTF-8">
@@ -38,16 +19,38 @@
 </head>
 
 <body>
+<div id="app">
     <!-- header -->
     <div class="header">
-    <h1>感谢使用论文管理系统</h1>
+        <h1>论文管理系统</h1>
     </div>
 
-    <!-- TopNavigation-->
-    <div class="TopNavigation">
-        
-        <a href="landing.html" target="_blank"> 重新登录 </a>
-    </div>
+    <div style="text-align: center; line-height: 600px; font-size: 40px">用户{{username}}您已成功退出论文管理系统,感谢您的使用</div>
+
+</div>
 
 </body>
+<script src="../js/vue.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../plugins/element-ui/index.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            username:''
+        },
+        created(){
+            this.getUsername();
+        },
+        methods:{
+            getUsername() {
+                this.username = localStorage.getItem("username");
+                console.log("你好,这里是退出页面!!" + this.username)
+            }
+        }
+    });
+
+</script>
 </html>

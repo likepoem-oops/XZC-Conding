@@ -11,20 +11,26 @@ import java.util.List;
 public interface StudentDao {
 
     @Select("select * from student where sno = #{sno}")
-    public Student getStudentBySno(Integer sno);
+    public Student getStudentBySno(String sno);
 
     @Select("select * from student")
     public List<Student> getAllStudent();
 
-    @Insert("insert into student (sno, name,password, topicPick, major) " +
+    // topicPick topicName
+    @Insert("insert into student (sno, name, password, major) " +
             "values " +
-            "(#{sno}, #{name}, #{password}, #{topicPick}, #{major});")
+            "(#{sno}, #{name}, #{password}, #{major});")
     public int saveStudent(Student student);
 
     @Delete("delete from student where sno = #{sno};")
-    public int deleteStudent(Integer sno);
+    public int deleteStudent(String sno);
 
-    @Update("update student set name=#{name}, password=#{password}, topicPick=#{topicPick}, major=#{major} where sno = #{sno};")
+    @Update("update student set name=#{name}, password=#{password}, topicPick=#{topicPick}, major=#{major}, topicName=#{topicName} where sno = #{sno};")
     public int updateStudent(Student student);
+
+    // 按topicPick查询学生
+
+    @Select("select * from student where topicPick = #{topicPick} ;")
+    public List<Student> getNoTopic(String topicPick);
 
 }

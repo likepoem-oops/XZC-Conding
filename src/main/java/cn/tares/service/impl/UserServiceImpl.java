@@ -13,6 +13,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public User getUser(String username){
         return userDao.selectByUsername(username);

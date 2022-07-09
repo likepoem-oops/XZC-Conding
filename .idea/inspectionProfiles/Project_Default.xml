@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="35">
+          <list size="36">
             <item index="0" class="java.lang.String" itemvalue="@tap" />
             <item index="1" class="java.lang.String" itemvalue="@tap.stop" />
             <item index="2" class="java.lang.String" itemvalue="@tap.prevent" />
@@ -40,6 +40,7 @@
             <item index="32" class="java.lang.String" itemvalue="@mouseleave" />
             <item index="33" class="java.lang.String" itemvalue="@mouseout" />
             <item index="34" class="java.lang.String" itemvalue="@mouseover" />
+            <item index="35" class="java.lang.String" itemvalue="username" />
           </list>
         </value>
       </option>

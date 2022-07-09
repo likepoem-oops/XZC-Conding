@@ -1,50 +1,70 @@
 package cn.tares.pojo;
 
 public class Topic {
-    private Integer id;
-    private String type;
-    private String name;
-    private String description;
+    private String topicId;
+    private String major;
+    private String topicName;
+    private String introduction;
+    private Integer number;
+    private Integer currentNum;
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+        return "Topic{" +
+                "stu_tea_id='" + topicId + '\'' +
+                ", major='" + major + '\'' +
+                ", topicName='" + topicName + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", number=" + number +
+                ", currentNum=" + currentNum +
                 '}';
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
-    public String getType() {
-        return type;
+    public Integer getCurrentNum() {
+        return currentNum;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCurrentNum(Integer currentNum) {
+        this.currentNum = currentNum;
     }
 
-    public String getName() {
-        return name;
+    public String getTopicId() {
+        return topicId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getMajor() {
+        return major;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 }

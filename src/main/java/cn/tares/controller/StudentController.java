@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @GetMapping("/{sno}")
-    public Result getStudentBySno(@PathVariable Integer sno){
+    public Result getStudentBySno(@PathVariable String sno){
         Student student = studentService.getStudentBySno(sno);
         Integer code = student != null ? Code.GET_OK : Code.GET_ERR;
         String msg = student != null ? "" : "数据查询失败，请重试！";
@@ -45,9 +45,18 @@ public class StudentController {
     }
 
     @DeleteMapping("/{sno}")
-    public Result deleteStudent(@PathVariable Integer sno){
+    public Result deleteStudent(@PathVariable String sno){
         boolean flag = studentService.deleteStudent(sno);
         return new Result(flag? Code.DELETE_OK: Code.DELETE_ERR, flag);
     }
+
+    @GetMapping("/isPicked/{topicPick}")
+    public Result findNotPickTopic(@PathVariable String topicPick){
+        List<Student> studentList = studentService.getNoTopic(topicPick);
+        Integer code = studentList != null ? Code.GET_OK : Code.GET_ERR;
+        String msg = studentList != null ? "" : "数据查询失败，请重试！";
+        return new Result(code, studentList, msg);
+    }
+
 
 }

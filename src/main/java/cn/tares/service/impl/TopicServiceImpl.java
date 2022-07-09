@@ -13,27 +13,64 @@ import java.util.List;
 public class TopicServiceImpl implements TopicService {
 
     @Autowired
-    private TopicDao TopicDao;
+    private TopicDao topicDao;
 
     public boolean save(Topic Topic) {
-        return TopicDao.save(Topic) > 0;
+        return topicDao.save(Topic) > 0;
     }
 
     public boolean update(Topic Topic) {
-        return TopicDao.update(Topic) > 0;
+        return topicDao.update(Topic) > 0;
 
     }
 
-    public boolean delete(Integer id) {
-        return TopicDao.delete(id) > 0;
+    public boolean delete(String topicId) {
+        return topicDao.delete(topicId) > 0;
 
     }
 
-    public Topic getById(Integer id) {
-        return TopicDao.getById(id);
+    public Topic getById(String topicId) {
+        return topicDao.getById(topicId);
     }
 
     public List<Topic> getAll() {
-        return TopicDao.getAll();
+        return topicDao.getAll();
     }
+
+    @Override
+    public boolean saveToReview(Topic topic) {
+        return topicDao.saveToReview(topic) > 0;
+    }
+
+    @Override
+    public boolean updateReview(Topic topic) {
+        return topicDao.updateReview(topic) > 0;
+    }
+
+    @Override
+    public boolean deleteReview(String topicId) {
+        return topicDao.deleteReview(topicId) > 0;
+    }
+
+    @Override
+    public List<Topic> getAllFromReview() {
+        return topicDao.getAllFromReview();
+    }
+
+    @Override
+    public Topic getSingleFromReview(String topicId) {
+        return topicDao.getSingleFromReview(topicId);
+    }
+
+    @Override
+    public List<Topic> getNotFullTopic(String major) {
+        return topicDao.getNotFullTopic(major);
+    }
+
+    @Override
+    public boolean updateCurrentNum(Topic topic) {
+        return topicDao.updateCurrentNum(topic) > 0;
+    }
+
+
 }

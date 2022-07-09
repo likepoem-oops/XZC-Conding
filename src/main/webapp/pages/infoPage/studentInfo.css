@@ -1,0 +1,17 @@
+.myTable {
+    border-collapse: collapse;
+    margin: 10px auto;
+    text-align: center;
+
+}
+
+.myTable td,
+.myTable th,
+.myTable tr{
+    display: flex;
+    flex: 1;
+    border: 3px solid #cad9ea;
+    color: #666;
+    height: 60px;
+}
+
