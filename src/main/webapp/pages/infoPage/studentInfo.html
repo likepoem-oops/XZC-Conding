@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .header {
+            color: white;
+            padding: 20px;
+            background-color: #4682B4;
+            text-align: center;
+        }
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <h1>论文管理系统</h1>
+</div>
+<!-- 头像 -->
+<div>
+    <img src="/images/img/studentInfoAvatar.png" style="margin-top: 10px;border: 1px solid rgba(42, 46, 52);height: 120px; width: 120px">
+</div>
+<!-- element组件 -->
+<div id="app">
+    <!-- 表格-->
+    <table style="width: 100%; " class="myTable">
+        <tr>
+            <td style="text-align: center">学生姓名</td>
+            <td style="text-align: center">{{userObj.name}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">学生专业</td>
+            <td style="text-align: center">{{userObj.major}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">是否已选题</td>
+            <td style="text-align: center">{{userObj.topicPick}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">学号</td>
+            <td style="text-align: center">{{userObj.sno}}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center">选题名称</td>
+            <td style="text-align: center">{{userObj.topicName}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<!-- 引入资源文件 -->
+<script src="/js/vue.js"></script>
+<script src="/element-ui/lib/index.js"></script>
+<script src="/js/axios-0.18.0.js"></script>
+<link rel="stylesheet" href="/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="studentInfo.css">
+
+<!-- 创建Vue核心对象 -->
+<script>
+    new Vue({
+            el:"#app",
+            data:{
+                userObj:{},
+                username:'',
+            },
+
+            created(){
+                this.getUsername();
+                this.getUserObj();
+            },
+
+            methods:{
+                getUsername() {
+                    this.username = localStorage.getItem("username");
+                },
+                getUserObj(){
+                    if (this.username.length == 8){
+                        axios.get("/students/" + this.username).then((res) => {
+                            this.userObj = res.data.data;
+                        });
+                    }
+                }
+            }
+        }
+    )
+</script>
+</html>

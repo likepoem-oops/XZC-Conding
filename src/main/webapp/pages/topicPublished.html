@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- todo topicPublished 查看自己已经发布选题页面-->
+<head>
+    <meta charset="UTF-8">
+    <title>已发布课题</title>
+
+    <style>
+        .header {
+            color: white;
+            padding: 20px;
+            background-color: #B0C4DE;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <h1>论文管理系统</h1>
+</div>
+
+<!-- element组件 -->
+<div id="app">
+    <!-- 表单 -->
+    <div class="content-header">
+        <h2>我的选题</h2>
+    </div>
+    <hr>
+<!--    <div>-->
+<!--        <el-form :inline="true" class="demo-form-inline">-->
+<!--            <el-form-item label="课题号">-->
+<!--                <el-input v-model="topicIdCheckBox.topicId" placeholder="请输入需要查询的课题号"></el-input>-->
+<!--                <el-button type="primary" @click="onSubmit" class="dalfBut">查询</el-button>-->
+<!--            </el-form-item>-->
+<!--        </el-form>-->
+<!--    </div>-->
+    <!-- 表格 -->
+    <template>
+        <el-table
+                :data="tableData"
+                border
+                style="width: 100%">
+            <el-table-column
+                    prop="topicName"
+                    label="论文课题">
+                    <!-- width="350"-->
+            </el-table-column>
+            <el-table-column
+                    prop="topicId"
+                    label="课题号">
+            </el-table-column>
+            <el-table-column
+                    prop="isFull"
+                    label="是否选满">
+            </el-table-column>
+            <!--  操作   -->
+            <el-table-column label="操作" align="center">
+                <template slot-scope="scope">
+                    <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">查看此选题情况</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+    <hr>
+    <div class="content-header">
+        <h2>查看选题学生</h2>
+    </div>
+    <div style="margin-left: 20px; ">
+        容量: {{currentTopic.number}} 剩余容量:{{currentTopic.currentNum}}
+    </div>
+
+    <template>
+        <el-table :data="studentData" border style="width: 100%">
+
+            <el-table-column type="index" align="center" label="序号"></el-table-column>
+
+            <el-table-column prop="sno" label="学号" align="center"></el-table-column>
+
+            <el-table-column prop="sname" label="学生名称" align="center"></el-table-column>
+
+            <el-table-column prop="major" label="学生专业" align="center"></el-table-column>
+
+        </el-table>
+    </template>
+</div>
+</body>
+
+<!-- 引入资源文件 -->
+<script src="../js/vue.js"></script>
+<script src="../plugins/element-ui/index.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<link rel="stylesheet" href="../plugins/element-ui/index.css">
+
+<!-- 创建Vue核心对象 -->
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return{
+                // 表单数据
+                currentTopic: {},
+                tableData:[],
+                studentData:[],
+                topicIdCheckBox:{},
+                formInline: {
+                    user: '',
+                    region: ''
+                }
+            }
+        },
+        created(){
+            this.getLoginTeacher();
+            this.getPublishBySelf();
+        },
+
+        methods: {
+            // 得到登录用户
+            getLoginTeacher(){
+                console.log(this.user)
+                this.user = localStorage.getItem("username");
+            },
+
+            // 得到自己发布的选题列表
+            getPublishBySelf(){
+                // 从linkTopic中查询出来
+                axios.get("/linkTopics").then((res) => {
+                    this.tableData = res.data.data;
+                });
+            },
+            // 表单方法
+            onSubmit() {
+                console.log('submit!');
+            },
+            // 查看某选题的选择学生
+            handleUpdate(row){
+                axios.get("/topics/" + row.topicId).then((res) => {
+                    this.currentTopic = res.data.data;
+                })
+                axios.get("/linkStudents/byTopicId/" + row.topicId).then((res) => {
+                    this.studentData = res.data.data;
+                })
+            }
+        },
+    })
+</script>
+</html>

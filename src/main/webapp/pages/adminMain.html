@@ -58,8 +58,8 @@
         <el-container >
 
             <el-aside width="200px">
-                <el-menu background-color="#F0F8FF"
-                         text-color="#000000"
+                <el-menu background-color="#4682B4"
+                         text-color="#000080"
                          active-text-color="#FFA500"
                 >
                     <el-submenu v-for="menu in menuList" :index="menu.path">
@@ -120,6 +120,12 @@
                             "title": "未审批的详细选题",
                             "linkUrl":"/pages/notReviewedTopics.html",
                             "children":[]
+                        },
+                        {
+                            "path": "/2-3",
+                            "title": "查询教师发布的选题",
+                            "linkUrl":"/pages/adminCheckTeacherTopic.html",
+                            "children":[]
                         }
                     ]
                 },
@@ -150,7 +156,7 @@
                         {
                             "path": "/4-1",
                             "title": "选题时间",
-                            "linkUrl":"/pages/teacher.html",
+                            "linkUrl":"/pages/topicPickTimeSet.html",
                             "children": []
                         }
                     ]

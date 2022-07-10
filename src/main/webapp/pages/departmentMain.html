@@ -59,8 +59,8 @@
 
 
             <el-aside width="200px">
-                <el-menu background-color="#F0F8FF"
-                         text-color="#000000"
+                <el-menu background-color="#4682B4"
+                         text-color="#000080"
                          active-text-color="#ffd04b"
                 >
                     <el-submenu v-for="menu in menuList" :index="menu.path">
@@ -160,6 +160,12 @@
                             "title": "详细信息",
                             "linkUrl":"/pages/teacher.html",
                             "children": []
+                        },
+                        {
+                            "path": "/4-2",
+                            "title": "查询教师发布的课题",
+                            "linkUrl":"/pages/showTeacherTopic.html",
+                            "children": []
                         }
                     ]
                 }
@@ -168,7 +174,6 @@
 
 
         created(){
-
             this.getUsername();
         },
 

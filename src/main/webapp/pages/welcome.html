@@ -51,7 +51,7 @@
                 console.log("你好，这里是welcome页面!!" + this.username)
             },
             getUserObj(){
-                if (this.username.length == 4){
+                if (this.username.length == 5){
                     axios.get("/department/" + this.username).then((res) => {
                         this.userObj = res.data.data;
                     })

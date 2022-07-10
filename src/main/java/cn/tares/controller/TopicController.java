@@ -104,6 +104,4 @@ public class TopicController {
         String msg = flag? "修改剩余容量成功": "修改剩余容量失败";
         return new Result(code, flag, msg);
     }
-
-
 }

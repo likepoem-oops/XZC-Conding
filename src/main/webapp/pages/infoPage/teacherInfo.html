@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .header {
+            color: black;
+            padding: 20px;
+            background-color: #E6E6FA;
+            text-align: center;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>教师信息</title>
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <h1>论文管理系统</h1>
+</div>
+<!-- 头像 -->
+<div><img src="/images/img/studentInfoAvatar.png" style="height: 120px; width: 120px"></div>
+<!-- element组件 -->
+<div id="app">
+    <!-- 表格-->
+    <table style="width: 100%; " class="myTable">
+        <tr>
+            <td class="column">教师姓名</td>
+            <td class="column">{{userObj.tname}}</td>
+        </tr>
+        <tr>
+            <td class="column">教师专业</td>
+            <td class="column">{{userObj.etopic}}</td>
+        </tr>
+        <tr>
+            <td class="column">我的账号</td>
+            <td class="column">{{userObj.tno}}</td>
+        </tr>
+        <tr>
+            <td class="column">我的密码</td>
+            <td class="column">{{userObj.password}}</td>
+        </tr>
+        <tr>
+            <td class="column">我的简介</td>
+            <td class="column">{{userObj.introduction}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<!-- 引入资源文件 -->
+<script src="/js/vue.js"></script>
+<script src="/element-ui/lib/index.js"></script>
+<script src="/js/axios-0.18.0.js"></script>
+<link rel="stylesheet" href="/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="teacherInfo.css">
+
+<!-- 创建Vue核心对象 -->
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            userObj:{},
+            username:'',
+        },
+        created(){
+          this.getUsername();
+          this.getUserObj();
+        },
+
+        methods:{
+            getUsername() {
+                this.username = localStorage.getItem("username");
+            },
+            getUserObj(){
+                if (this.username.length == 4){
+                    axios.get("/teachers/" + this.username).then((res) => {
+                        this.userObj = res.data.data;
+                    });
+                }
+            }
+        }
+    })
+</script>
+</html>

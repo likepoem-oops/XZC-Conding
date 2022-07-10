@@ -65,4 +65,5 @@ public interface TopicService {
 
     // 被选择了一个选题之后修改选题的剩余容量
     public boolean updateCurrentNum(Topic topic);
+
 }

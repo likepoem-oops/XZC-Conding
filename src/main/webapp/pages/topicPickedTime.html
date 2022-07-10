@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Todo topicPickedTime - 待修改(可能会删除)-->
+<head>
+    <meta charset="UTF-8">
+    <title>选课时间</title>
+
+    <style>
+        .header {
+            color: white;
+            padding: 20px;
+            background-color: #4682B4;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <h1>论文管理系统</h1>
+</div>
+
+<!-- element组件 -->
+    <div id="app">
+        <!-- 表格 -->
+        <template>
+            <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%">
+                <el-table-column
+                        prop="start"
+                        label="开始日期"
+                        width="800">
+                </el-table-column>
+                <el-table-column
+                        prop="ending"
+                        label="结束日期"
+                        >
+                </el-table-column>
+
+            </el-table>
+        </template>
+    </div>
+</body>
+
+<!-- 引入资源文件 -->
+<script src="../js/vue.js"></script>
+<script src="../plugins/element-ui/index.js"></script>
+<link rel="stylesheet" href="../plugins/element-ui/index.css">
+
+<!-- 创建Vue核心对象 -->
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+
+        },
+        methods: {
+
+        },
+    })
+</script>
+</html>
